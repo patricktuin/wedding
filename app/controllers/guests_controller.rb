@@ -1,9 +1,5 @@
 class GuestsController < ApplicationController
-  before_filter :allow_iframe_requests
-
-  def allow_iframe_requests
-    response.headers.delete('X-Frame-Options')
-  end
+  
   def create
     @invitee = Invitee.find(params[:invitee_id])
     @guest = @invitee.guests.create(guest_params)
