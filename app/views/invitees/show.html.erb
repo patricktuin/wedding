@@ -1,0 +1,73 @@
+
+<div class="page-header">
+<h1>  <%= @invitee.name %></h1>
+</div>
+
+
+
+<div class='row'>
+	<div class='col-sm-4'>
+		<table class="table table-striped">
+		<th>ID</th>
+		<th>Naam</th>
+		<th>Aanwezig <span class="glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#myModal"> </span></th>
+		<th>Edit</th>
+		<% @invitee.guests.each do |guest| %>
+			<tr>
+			<td><%= guest.id %> </a></td>
+			<td><%= guest.name %> </a></td>
+				<td>
+				<% if guest.attend == 1 %>
+					<% btn_color = "btn btn-success" %>
+					<% btn_color_dif = "btn btn-default"%>
+					<% attending = "Ja"%>
+					<% attending_dif = "Nee" %>
+				<% else %>
+					<% btn_color = "btn btn-warning" %>
+					<% btn_color_dif = "btn btn-warning "%>
+					<% attending = "Nee"%>
+					<% attending_dif = "Ja" %>
+				<% end %>
+				<!-- Split button -->
+				<div class="btn-group">
+				  <button type="button" class="<%= btn_color %> dropdown-toggle" data-toggle="dropdown"><%= attending %>
+				    <span class="caret"></span>
+	
+				  </button>
+				  <ul class="dropdown-menu" role="menu">
+				    <li><a href="/pages/wedding/location"><%= attending_dif %></a></li>
+				  </ul>
+				</div>
+				</td>
+				<td><%= link_to 'Edit', edit_invitee_path(@invitee) %></td>
+
+		<% end %>
+		</table>
+	</div>
+</div>
+
+
+<%= link_to 'Back', invitees_path %>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Aanwezigheid</h4>
+        </div>
+        <div class="modal-body">
+          Hier kun je aanpassen of je verwacht wel of niet te komen. Mocht dit later wijzigen, dan kan dit altijd nog. Maar het geeft een ons beeld hoeveel mensen er komen. Zo kunnen we rekening houden met bijvoorbeeld genoeg drankjes. 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% @invitee.guests.each do |guest| %>
+	<%= guest.name %>
+<% end %>

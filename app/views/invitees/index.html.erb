@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="page-header">
+    <h1>Genodigden</h1>
+  </div>
+</div>
+
+
+<div class="container">
+	<table>
+	  <tr>
+	    <th>Id</th>
+	    <th>Naam</th>
+	  </tr>
+	 
+	  <% @invitees.each do |invitee| %>
+	    <tr>
+	      <td><%= invitee.id %></td>
+	      <td><%= invitee.name %></td>
+	      <td><%= link_to 'Show', invitee_path(invitee) %></td>
+    	  <td><%= link_to 'Edit', edit_invitee_path(invitee) %></td>
+	    </tr>
+	  <% end %>
+	</table>
+</div>
+
+
+
+<div class="container">
+<%= link_to 'New article', new_invitee_path %>
+</div>

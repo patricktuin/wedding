@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="page-header">
+    <h1>New Invitee</h1>
+  </div>
+</div>
+
+<div class="container">
+  <%= form_for :invitee, url: invitees_path do |f| %>
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+   
+    <p>
+      <%= f.submit 'Voeg toe'%>
+    </p>
+  <% end %>
+</div>
+<div class="container">
+    <%= link_to 'Back', invitees_path %>
+</div>
